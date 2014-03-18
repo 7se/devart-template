@@ -1,7 +1,7 @@
 Breath and Exist
 
 ## Authors
-- Luyu Gao
+- Luyu Gao https://github.com/7se
 - Jin Cui
 
 ## Description
