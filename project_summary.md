@@ -1,13 +1,12 @@
 # Project Title
-Breath and Exist
+Insert the name of your project
 
 ## Authors
-- Luyu Gao
-- Jin Cui
+- Insert main author name, surname, github account
+- Insert other author(s) name, surname, github account (one per list element)
 
 ## Description
-Traget User: Long-Distances' lovers
-Discription: For LDR peoples, the distances is always the biggest problem. For them they communicate by words, audios and cybercams to feel the existances of the relationship. However, all those ways are only on the niveau of 'thought', they couldn't feel each others' emotions, what are as usual as the breath or the beat of heart. I hope those LDR peoples could through the interaction design, precisely, by visual technic, to really feel each other's emotions' changes, and then, draw the distance more closer. 
+Insert a description containing about 100 to 150 words, including your motivation and the meaning behind your idea and execution. The Judges will be keen to know how your idea pushes the boundaries of code and technology. 
 
 ## Link to Prototype
 NOTE: If your project lives online you can add one or more links here. Make sure you have a stable version of your project running before linking it.
