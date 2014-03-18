@@ -28,4 +28,4 @@ function test() {
 ## Images & Videos
 NOTE: For additional images you can either use a relative link to an image on this repo or an absolute link to an externally hosted image.
 
-(project_images/sketch1.jpg?raw=true "Example Image")
+![Example Image](project_images/sketch1.jpg?raw=true "Example Image")
