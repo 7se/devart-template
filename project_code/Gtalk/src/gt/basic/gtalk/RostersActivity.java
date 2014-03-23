@@ -89,7 +89,7 @@ public class RostersActivity extends Activity {
 						// TODO Auto-generated method stub
 						int p = (int) id;
 						Intent intent = new Intent(getApplicationContext(),
-								TalkActivity.class);
+								TalkActivity2.class);
 						intent.putExtra(KEY, entry.get(p).getUser());
 						RostersActivity.this.startActivity(intent);
 					}

@@ -25,7 +25,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:ems="10"
-        android:text="pouloghost@gmail.com" />
+        android:text="cuijin123@gmail.com" />
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -35,7 +35,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/usernameEditText"
         android:ems="10" 
-        android:text="ghost942646">
+        android:text="cuijin891008">
 
         <requestFocus />
     </EditText>

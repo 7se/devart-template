@@ -9,6 +9,46 @@ package gt.basic.gtalk;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int ovalBottom=0x7f010003;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int ovalLeft=0x7f010000;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int ovalRight=0x7f010002;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int ovalTop=0x7f010001;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -24,13 +64,15 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080006;
+        public static final int action_settings=0x7f080008;
         public static final int connectButton=0x7f080000;
         public static final int passwordEditText=0x7f080002;
+        public static final int receiveText=0x7f080005;
         public static final int rostersListView=0x7f080003;
         public static final int sendButton=0x7f080004;
+        public static final int testView1=0x7f080006;
         public static final int usernameEditText=0x7f080001;
-        public static final int usernameTextView=0x7f080005;
+        public static final int usernameTextView=0x7f080007;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -74,4 +116,89 @@ public final class R {
          */
         public static final int AppTheme=0x7f060001;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a DrawGasView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #DrawGasView_ovalBottom gt.basic.gtalk:ovalBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #DrawGasView_ovalLeft gt.basic.gtalk:ovalLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #DrawGasView_ovalRight gt.basic.gtalk:ovalRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #DrawGasView_ovalTop gt.basic.gtalk:ovalTop}</code></td><td></td></tr>
+           </table>
+           @see #DrawGasView_ovalBottom
+           @see #DrawGasView_ovalLeft
+           @see #DrawGasView_ovalRight
+           @see #DrawGasView_ovalTop
+         */
+        public static final int[] DrawGasView = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003
+        };
+        /**
+          <p>This symbol is the offset where the {@link gt.basic.gtalk.R.attr#ovalBottom}
+          attribute's value can be found in the {@link #DrawGasView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:ovalBottom
+        */
+        public static final int DrawGasView_ovalBottom = 3;
+        /**
+          <p>This symbol is the offset where the {@link gt.basic.gtalk.R.attr#ovalLeft}
+          attribute's value can be found in the {@link #DrawGasView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:ovalLeft
+        */
+        public static final int DrawGasView_ovalLeft = 0;
+        /**
+          <p>This symbol is the offset where the {@link gt.basic.gtalk.R.attr#ovalRight}
+          attribute's value can be found in the {@link #DrawGasView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:ovalRight
+        */
+        public static final int DrawGasView_ovalRight = 2;
+        /**
+          <p>This symbol is the offset where the {@link gt.basic.gtalk.R.attr#ovalTop}
+          attribute's value can be found in the {@link #DrawGasView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:ovalTop
+        */
+        public static final int DrawGasView_ovalTop = 1;
+    };
 }

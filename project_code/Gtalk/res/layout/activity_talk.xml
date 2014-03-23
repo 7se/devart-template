@@ -17,5 +17,20 @@
         android:layout_alignParentRight="true"
         android:text="send" />
 
+    <TextView
+        android:id="@+id/receiveText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sendButton"
+        android:layout_alignRight="@+id/sendButton"
+        android:text="TextView" />
+
+    <gt.basic.gtalk.testView2
+        android:id="@+id/testView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/sendButton"
+        android:layout_alignLeft="@+id/sendButton"
+        android:layout_marginBottom="152dp" />
 
 </RelativeLayout>

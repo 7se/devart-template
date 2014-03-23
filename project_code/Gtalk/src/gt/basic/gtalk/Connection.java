@@ -22,11 +22,12 @@ public class Connection {
 	private static XMPPConnection connect = null;
 	private static MessageListener listener = null;
 	private static Chat chat = null;
-
+	
+	private static ChatManager chatManager=null;
 	static {
 		listener = new MessageListener() {
 
-			@Override
+			@Override 
 			public void processMessage(Chat arg0, Message arg1) {
 				// TODO Auto-generated method stub
 			    int kk=0;
@@ -97,7 +98,16 @@ public class Connection {
 		if (chat == null && connect.isAuthenticated() && connect.isConnected()) {
 			ChatManager cm = connect.getChatManager();
 			chat = cm.createChat(userJID, listener);
+			//return cm;
 		}
 		return chat;
+	}
+	public static ChatManager GetChatManager(String userJID)
+	{
+		if(chatManager==null&&connect.isAuthenticated() && connect.isConnected())
+		{
+			chatManager=connect.getChatManager();
+		}
+		return chatManager;
 	}
 }

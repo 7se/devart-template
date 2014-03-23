@@ -13,7 +13,7 @@ public class MainActivity extends Activity {
 	private Button connetButton;
 	private EditText usernameEditText;
 	private EditText passwordEditText;
-
+	static MainActivity mainStatic;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,6 +22,9 @@ public class MainActivity extends Activity {
 		usernameEditText = (EditText) findViewById(R.id.usernameEditText);
 		passwordEditText = (EditText) findViewById(R.id.passwordEditText);
 
+		this.mainStatic=this;
+		
+		
 		connetButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
