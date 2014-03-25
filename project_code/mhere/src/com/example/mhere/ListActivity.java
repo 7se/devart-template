@@ -24,6 +24,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -49,7 +50,7 @@ public class ListActivity extends Activity{
 	private ListView rosterListView;
 	private List<String> data=new ArrayList();
 	private List<RosterEntry> entry=new ArrayList();
-	private Button buttonRefresh;
+	private Button buttonRefresh,buttonStartIntent;
 	private Configure configure;
 	private Chat chat;
 	
@@ -65,9 +66,24 @@ public class ListActivity extends Activity{
 		this.InitControl();
 		this.InitList();
 		this.InitChat();
+		
+		this.InitLINSHI();
 	}
 
-    
+    public void InitLINSHI()
+    {
+    	this.buttonStartIntent=(Button)this.findViewById(R.id.button1);
+    	this.buttonStartIntent.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			
+				Intent intent=new Intent(getApplicationContext(),BlowActivity.class);
+				startActivity(intent);
+			}
+		});
+    }
 	private Handler handler=new Handler()
 	{
 
@@ -85,7 +101,9 @@ public class ListActivity extends Activity{
 					builder.setPositiveButton("OK", null); 
 					builder.setNegativeButton("Cancel", null);
 					builder.show();
+					ClearListView();
 					InitList();
+					break;
 				}
 			case 1:
 				{
@@ -120,12 +138,121 @@ public class ListActivity extends Activity{
 							SaveReadWrite.GetConfigure().coupleName=name;
 							SaveReadWrite.GetConfigure().coupleState=CoupleStateEnum.BEINVITE;
 							SaveReadWrite.WriteConfigure();
+							ClearListView();
 							InitList();
 						}
 						
 					});
 					
 					builder.show();
+					break;
+				}
+			case 2:
+				{
+					AlertDialog.Builder builder = new Builder(ListActivity.this);
+					builder.setMessage("Receive an invitation?");
+					builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+							SaveReadWrite.GetConfigure().coupleState=CoupleStateEnum.CONNECT;
+							SaveReadWrite.WriteConfigure();
+							Chat chat1=Communication.GetConnection().getChatManager().createChat(SaveReadWrite.GetConfigure().coupleName, null);
+							
+							try {
+
+								chat1.sendMessage(Communication.ActionStart+"<ADD>"+SaveReadWrite.GetConfigure().Name);
+							} catch (XMPPException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							ClearListView();
+							InitList();
+						}
+					}); 
+					builder.setNegativeButton("Cancel", null);
+					builder.show();
+					break;
+				}
+			case 3:
+				{
+					AlertDialog.Builder builder2 = new Builder(ListActivity.this);
+					builder2.setMessage("DisConnect\resend the invite?");
+					builder2.setPositiveButton("DisConnect", new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog,
+								int which) {
+							// TODO Auto-generated method stub
+							SaveReadWrite.GetConfigure().coupleState=CoupleStateEnum.NOACTION;
+							SaveReadWrite.GetConfigure().coupleName="";
+							SaveReadWrite.WriteConfigure();
+							ClearListView();
+							InitList();
+						}
+					}); 
+					
+					builder2.setNegativeButton("Cancel", null);
+					builder2.show();
+					
+					break;
+				}
+			case 4:
+				{
+					AlertDialog.Builder builder2 = new Builder(ListActivity.this);
+					builder2.setMessage("Send Invite ?");
+					builder2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog,
+								int which) {
+							// TODO Auto-generated method stub
+							SaveReadWrite.GetConfigure().coupleName=name;
+							SaveReadWrite.WriteConfigure();
+							Chat chat1=Communication.GetConnection().getChatManager().createChat(SaveReadWrite.GetConfigure().coupleName, null);
+							try {
+								chat1.sendMessage(Communication.ActionStart+"<ADD>"+SaveReadWrite.GetConfigure().Name);
+							} catch (XMPPException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							ClearListView();
+							InitList();
+						}
+					}); 
+					builder2.setNegativeButton("Cancel", null);
+					builder2.show();
+					break;
+				}
+			case 5:
+				{
+					AlertDialog.Builder builder2 = new Builder(ListActivity.this);
+					builder2.setMessage("Send Invite ?");
+					builder2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog,
+								int which) {
+							// TODO Auto-generated method stub
+							SaveReadWrite.WriteConfigure();
+							Chat chat1=Communication.GetConnection().getChatManager().createChat(name, null);
+							try {
+								chat1.sendMessage(Communication.ActionStart+"<ADD>"+SaveReadWrite.GetConfigure().Name);
+								SaveReadWrite.GetConfigure().coupleName=name;
+								SaveReadWrite.GetConfigure().coupleState=CoupleStateEnum.INVITE;
+								SaveReadWrite.WriteConfigure();
+							} catch (XMPPException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							ClearListView();
+							InitList();
+						}
+					}); 
+					builder2.setNegativeButton("Cancel", null);
+					builder2.show();
+					break;
 				}
 			}
 		}
@@ -137,9 +264,12 @@ public class ListActivity extends Activity{
 		@Override
 		public void processMessage(Chat arg0, Message arg1) {
 			// TODO Auto-generated method stub
-			if(arg1.getBody()!=null&&arg1.getBody().startsWith(Communication.ActionStart))
+			if(arg1.getBody()!=null&&arg1.getBody().startsWith(Communication.ActionStart)&&arg1.getBody().contains("<ADD>"))
 			{
 				final String name=arg1.getBody().replace(Communication.ActionStart+"<ADD>", "");
+				
+				if(!name.equals(SaveReadWrite.GetConfigure().Name))
+				{
 				String str=SaveReadWrite.GetConfigure().coupleName;
 				if(name.equals(str))
 				{
@@ -148,15 +278,17 @@ public class ListActivity extends Activity{
 						
 						SaveReadWrite.GetConfigure().coupleState=CoupleStateEnum.CONNECT;
 						Chat chat1=Communication.GetConnection().getChatManager().createChat(SaveReadWrite.GetConfigure().coupleName, null);
+						
 						try {
+
 							chat1.sendMessage(Communication.ActionStart+"<ADD>"+SaveReadWrite.GetConfigure().Name);
 						} catch (XMPPException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						SaveReadWrite.WriteConfigure();						
-						handler.obtainMessage(0, name).sendToTarget();
 						
+						SaveReadWrite.WriteConfigure();						
+						handler.obtainMessage(0, name).sendToTarget();						
 					}
 
 				}
@@ -167,6 +299,7 @@ public class ListActivity extends Activity{
 						handler.obtainMessage(1, name).sendToTarget();
 						
 					}
+				}
 				}
 			}
 		}
@@ -189,6 +322,7 @@ public class ListActivity extends Activity{
 				{
 					if(SaveReadWrite.GetConfigure().coupleState==CoupleStateEnum.BEINVITE)
 					{
+						/*
 						AlertDialog.Builder builder = new Builder(ListActivity.this);
 						builder.setMessage("Receive an invitation?");
 						builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -203,9 +337,12 @@ public class ListActivity extends Activity{
 						}); 
 						builder.setNegativeButton("Cancel", null);
 						builder.show();
+						*/
+						handler.obtainMessage(2, null).sendToTarget();
 					}
 					if(SaveReadWrite.GetConfigure().coupleState==CoupleStateEnum.CONNECT)
 					{
+						/*
 						AlertDialog.Builder builder2 = new Builder(ListActivity.this);
 						builder2.setMessage("DisConnect the one?");
 						builder2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -222,9 +359,12 @@ public class ListActivity extends Activity{
 						}); 
 						builder2.setNegativeButton("Cancel", null);
 						builder2.show();
+						*/
+						handler.obtainMessage(3, null).sendToTarget();
 					}
 					if(SaveReadWrite.GetConfigure().coupleState==CoupleStateEnum.INVITE)
 					{
+						/*
 						AlertDialog.Builder builder2 = new Builder(ListActivity.this);
 						builder2.setMessage("Send Invite ?");
 						builder2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -247,11 +387,14 @@ public class ListActivity extends Activity{
 						}); 
 						builder2.setNegativeButton("Cancel", null);
 						builder2.show();
+						*/
+						handler.obtainMessage(4, entryNode.getUser()).sendToTarget();
 					}
 					
 				}
-				else if(SaveReadWrite.GetConfigure().coupleState==CoupleStateEnum.NOACTION)
+				else 
 				{
+					/*
 					AlertDialog.Builder builder2 = new Builder(ListActivity.this);
 					builder2.setMessage("Send Invite ?");
 					builder2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -276,6 +419,8 @@ public class ListActivity extends Activity{
 					}); 
 					builder2.setNegativeButton("Cancel", null);
 					builder2.show();
+					*/
+					handler.obtainMessage(5, entryNode.getUser()).sendToTarget();
 				}
 			}
 			

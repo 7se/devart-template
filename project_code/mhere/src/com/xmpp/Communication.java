@@ -17,6 +17,14 @@ public class Communication {
 		{
 			ConnectionConfiguration conf = new ConnectionConfiguration(HOST,
 					PORT, SERV);
+			{ 
+				try{
+				   Class.forName("org.jivesoftware.smack.ReconnectionManager");
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+			conf.setReconnectionAllowed(true);
 			connection = new XMPPConnection(conf);
 			try {
 				connection.connect();
