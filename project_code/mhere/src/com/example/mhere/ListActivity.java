@@ -52,6 +52,7 @@ public class ListActivity extends Activity{
 	private List<String> data=new ArrayList();
 	private List<RosterEntry> entry=new ArrayList();
 	private ImageButton buttonRefresh,buttonStartIntent;
+	private TextView textviewTitle;
 	private Configure configure;
 	private Chat chat;
 	
@@ -327,9 +328,13 @@ public class ListActivity extends Activity{
 	
 	public void InitControl()
 	{
+		this.textviewTitle=(TextView)this.findViewById(R.id.acti_titletext);
 		this.buttonRefresh=(ImageButton)this.findViewById(R.id.acti_refresh);
 		this.buttonRefresh.setOnClickListener(new ListOnClickListener());
 		this.rosterListView=(ListView)findViewById(R.id.acti_listshow);
+		
+		
+		
 		this.rosterListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -592,19 +597,20 @@ public class ListActivity extends Activity{
 			{
 				if(SaveReadWrite.GetConfigure().coupleState==CoupleStateEnum.BEINVITE)
 				{
-					map.put("listview_item_state", "be Invited");
+					//map.put("listview_item_imgstate", "be Invited");
+					map.put("listview_item_imgstate", R.drawable.list_invited);
 				}
 				if(SaveReadWrite.GetConfigure().coupleState==CoupleStateEnum.INVITE)
 				{
-					map.put("listview_item_state", "Invite");
+					map.put("listview_item_imgstate", R.drawable.list_invite);
 				}
 				if(SaveReadWrite.GetConfigure().coupleState==CoupleStateEnum.NOACTION)
 				{
-					map.put("listview_item_state", "");
+					map.put("listview_item_imgstate", R.drawable.state_noaction);
 				}
 				if(SaveReadWrite.GetConfigure().coupleState==CoupleStateEnum.CONNECT)
 				{
-					map.put("listview_item_state", "connect");
+					map.put("listview_item_imgstate", R.drawable.list_connect);
 				}
 			}
 		}

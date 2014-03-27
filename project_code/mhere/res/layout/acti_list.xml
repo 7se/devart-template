@@ -9,35 +9,40 @@
         android:layout_height="100px"
         android:background="#ffffff"
         >
-        <ImageButton
-        android:id="@+id/acti_refresh"
-        android:layout_width="80px"
-        android:layout_height="80px"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="Refresh_NameList" 
-        android:background="@drawable/refreshsmall"
-        />
+          <ImageButton
+            android:id="@+id/acti_refresh"
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/refreshsmall"
+            android:text="Refresh_NameList" />
         <TextView 
             android:id="@+id/acti_titletext"
             android:layout_width="wrap_content"
              android:layout_height="80dp"
              android:gravity="center"
              android:textSize="30dp"
-             android:text="cj"
+             android:text="Blind"
              android:layout_alignParentLeft="true"
              android:layout_alignParentRight="true"
              android:layout_marginLeft="80dp"
              android:layout_marginRight="80dp"
             />
+
+      
+
         <ImageButton
-        android:id="@+id/button1"
-        android:layout_width="80px"
-        android:layout_height="80px"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-         android:background="@drawable/backsmll"
-        android:text="Button" />
+            android:id="@+id/button1"
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/acti_refresh"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/list_next"
+            android:text="Button" />
+
 		</RelativeLayout>
 
 

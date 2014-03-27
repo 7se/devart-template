@@ -67,6 +67,8 @@ public class MainActivity extends Activity {
 			// TODO Auto-generated method stub
 			if(arg0.getId()==R.id.login_login)
 			{
+				loginButton.setText("Login...");
+				loginButton.invalidate();
 				AsyncTask<String, Integer, String> task = new AsyncTask<String, Integer, String>() {
 					String result;
 					boolean startMark=false;
@@ -85,15 +87,20 @@ public class MainActivity extends Activity {
 								SaveReadWrite.GetConfigure().Name=params[0];
 								SaveReadWrite.GetConfigure().Password=params[1];
 								SaveReadWrite.WriteConfigure();
+								
 							}
 							catch(Exception ee)
 							{
 								result=ee.getMessage().toString();
+								loginButton.setText("Login");
+								loginButton.invalidate();
 							}
 						}
 						else
 						{
 							result="Check the Internet :D";
+							loginButton.setText("Login");
+							loginButton.invalidate();
 						}
 						return null;
 					}
@@ -110,13 +117,12 @@ public class MainActivity extends Activity {
 						{
 							Intent intent=new Intent(MainActivity.this,ListActivity.class);
 							MainActivity.this.startActivity(intent);
+							finish();
 						}
 					}
 
-				};
-				
+				};				
 				task.execute(nameEdit.getText().toString(), passwordEdit.getText().toString());
-
 			}
 		}
 		

@@ -16,9 +16,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,7 +40,11 @@ public class BlowActivity extends Activity{
     private RealDoubleFFT transformer;
     private int blockSize = 256;
     private boolean started = true;
-
+    private ImageButton leftImageButton;
+    
+    private ImageButton backButton;
+    private ImageView backImageView,backImageView2;
+    private TextView titleTextView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -50,13 +56,27 @@ public class BlowActivity extends Activity{
 
 	private void Init()
 	{
+		this.leftImageButton=(ImageButton)findViewById(R.id.blow_blowbuttonsmall);
+		this.backImageView=(ImageView)findViewById(R.id.blow_backview);
+		this.backImageView2=(ImageView)findViewById(R.id.blow_backviewblackon);
+		this.titleTextView=(TextView)findViewById(R.id.blow_titlebartext);
+		this.titleTextView.setText(SaveReadWrite.GetConfigure().Name);
 		this.transformer= new RealDoubleFFT(blockSize);
 		this.buttonSend=(Button)findViewById(R.id.blow_blowbutton);
+		
 		Intent intent = getIntent();		
 		Intent intentStart=new Intent(getApplicationContext(), FloatBackService.class);
 		this.startService(intentStart);
 	    this.buttonSend.setOnTouchListener(new ButtonListener());
-	    
+	    this.backButton=(ImageButton)this.findViewById(R.id.blow_backbutton);
+	    this.backButton.setOnClickListener(new OnClickListener() {			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				onBackPressed();
+			}
+		});
+	    backImageView2.setAlpha(0);
 	}
 	private class ButtonListener implements OnTouchListener
 	{
@@ -71,9 +91,24 @@ public class BlowActivity extends Activity{
 				recordAudio=new RecordAudio();
 				recordAudio.RunMark=true;
 				recordAudio.execute();
+				backImageView2.setBackgroundColor(0);
+				backImageView2.setAlpha(150);
+				backImageView2.invalidate();
+				leftImageButton.setImageResource(R.drawable.blow_blowsmall2);
+				leftImageButton.invalidate();
+				buttonSend.setBackgroundColor(0xff007de7);
+				buttonSend.invalidate();
 			}
 			if(arg1.getAction()==MotionEvent.ACTION_UP)
 			{
+				buttonSend.setBackgroundColor(0xffffffff);
+				buttonSend.invalidate();
+				backImageView2.setBackgroundColor(0);
+				backImageView2.setAlpha(0);
+				backImageView2.invalidate();
+				leftImageButton.setImageResource(R.drawable.blow_blowsmall);
+				leftImageButton.invalidate();
+				
 				recordAudio.RunMark=false;
 				//recordAudio.cancel(false);
 				try {
@@ -82,6 +117,7 @@ public class BlowActivity extends Activity{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 			}
 			return false;
 		}
