@@ -1,16 +1,20 @@
 {
     "technologies": {
         "apis": [
-            "insert apis"
+            "xmpp",
+	    "google talk"
         ],
         "platforms": [
-            "insert platforms"
+            "android"
         ],
         "toolkits": [
-            "insert toolkits"
+            "java",
+            "xmpp"
         ]
     },
     "themes": [
-        "insert themes"
+        "wishes"
+        "lovers"
+        "blow"
     ]
 }
