@@ -15,10 +15,36 @@ NOTE: If your project lives online you can add one or more links here. Make sure
 
 ## Example Code
 NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
-```
 function test() {
   console.log("Printing a test");
+
+  for(int i=0;i<length;i++)
+
+  {
+    for(int j=0;j<width;j++)
+
+    {
+     
+ bitmap[i][j]=(Math.sin(i*Math.cos(j))<<24)&0xffffff;
+
+    }
+
+  }
+
+  for(int alpha=0;alpha<255;alpha++)
+
+  {
+    bitmap.setAlpha(alpha);
+
+      bitmap.draw();
+  
+      sleep(30);
+
+  }
+
+
 }
+
 ```
 ## Links to External Libraries
  NOTE: You can also use this space to link to external libraries or Github repositories you used on your project.
