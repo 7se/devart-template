@@ -15,7 +15,7 @@ NOTE: If your project lives online you can add one or more links here. Make sure
 
 ## Example Code
 NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
-...
+``` 
 function test() {
   console.log("Printing a test");
 
