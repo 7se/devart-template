@@ -16,6 +16,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -42,6 +43,7 @@ public class BlowActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_blow);
 		this.Init();
 	}
@@ -50,11 +52,11 @@ public class BlowActivity extends Activity{
 	{
 		this.transformer= new RealDoubleFFT(blockSize);
 		this.buttonSend=(Button)findViewById(R.id.blow_blowbutton);
-		Intent intent = getIntent();
-		
+		Intent intent = getIntent();		
 		Intent intentStart=new Intent(getApplicationContext(), FloatBackService.class);
 		this.startService(intentStart);
 	    this.buttonSend.setOnTouchListener(new ButtonListener());
+	    
 	}
 	private class ButtonListener implements OnTouchListener
 	{

@@ -3,31 +3,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <Button
+    <RelativeLayout 
+        android:id="@+id/list_titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="100px"
+        android:background="#ffffff"
+        >
+        <ImageButton
         android:id="@+id/acti_refresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80px"
+        android:layout_height="80px"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/button1"
-        android:text="Refresh_NameList" />
+        android:text="Refresh_NameList" 
+        android:background="@drawable/refreshsmall"
+        />
+        <TextView 
+            android:id="@+id/acti_titletext"
+            android:layout_width="wrap_content"
+             android:layout_height="80dp"
+             android:gravity="center"
+             android:textSize="30dp"
+             android:text="cj"
+             android:layout_alignParentLeft="true"
+             android:layout_alignParentRight="true"
+             android:layout_marginLeft="80dp"
+             android:layout_marginRight="80dp"
+            />
+        <ImageButton
+        android:id="@+id/button1"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+         android:background="@drawable/backsmll"
+        android:text="Button" />
+		</RelativeLayout>
+
+
+    
 
     <ListView
         android:id="@+id/acti_listshow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/acti_refresh"
+        android:layout_below="@+id/acti_refresh"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100px"
+         >
 
     </ListView>
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="Button" />
-
 </RelativeLayout>

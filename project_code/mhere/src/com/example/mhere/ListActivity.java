@@ -36,6 +36,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -50,7 +51,7 @@ public class ListActivity extends Activity{
 	private ListView rosterListView;
 	private List<String> data=new ArrayList();
 	private List<RosterEntry> entry=new ArrayList();
-	private Button buttonRefresh,buttonStartIntent;
+	private ImageButton buttonRefresh,buttonStartIntent;
 	private Configure configure;
 	private Chat chat;
 	
@@ -72,7 +73,7 @@ public class ListActivity extends Activity{
 
     public void InitLINSHI()
     {
-    	this.buttonStartIntent=(Button)this.findViewById(R.id.button1);
+    	this.buttonStartIntent=(ImageButton)this.findViewById(R.id.button1);
     	this.buttonStartIntent.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -178,7 +179,10 @@ public class ListActivity extends Activity{
 			case 3:
 				{
 					AlertDialog.Builder builder2 = new Builder(ListActivity.this);
-					builder2.setMessage("DisConnect\resend the invite?");
+					builder2.setMessage("DisConnect\resend the invite?");						
+					builder2.setNeutralButton("Cancel", null);
+					
+					
 					builder2.setPositiveButton("DisConnect", new DialogInterface.OnClickListener() {
 
 						@Override
@@ -190,12 +194,27 @@ public class ListActivity extends Activity{
 							SaveReadWrite.WriteConfigure();
 							ClearListView();
 							InitList();
+							
 						}
 					}); 
+					builder2.setNegativeButton("Resend", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface arg0, int arg1) {
+							// TODO Auto-generated method stub
+							Chat chat1=Communication.GetConnection().getChatManager().createChat(SaveReadWrite.GetConfigure().coupleName, null);
+							try {
+								chat1.sendMessage(Communication.ActionStart+"<ADD>"+SaveReadWrite.GetConfigure().Name);
+							} catch (XMPPException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							ClearListView();
+							InitList();
+						}
+					});
 					
-					builder2.setNegativeButton("Cancel", null);
 					builder2.show();
-					
 					break;
 				}
 			case 4:
@@ -203,7 +222,7 @@ public class ListActivity extends Activity{
 					AlertDialog.Builder builder2 = new Builder(ListActivity.this);
 					builder2.setMessage("Send Invite ?");
 					builder2.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
+				
 						@Override
 						public void onClick(DialogInterface dialog,
 								int which) {
@@ -308,7 +327,7 @@ public class ListActivity extends Activity{
 	
 	public void InitControl()
 	{
-		this.buttonRefresh=(Button)this.findViewById(R.id.acti_refresh);
+		this.buttonRefresh=(ImageButton)this.findViewById(R.id.acti_refresh);
 		this.buttonRefresh.setOnClickListener(new ListOnClickListener());
 		this.rosterListView=(ListView)findViewById(R.id.acti_listshow);
 		this.rosterListView.setOnItemClickListener(new OnItemClickListener() {
@@ -360,7 +379,46 @@ public class ListActivity extends Activity{
 						builder2.setNegativeButton("Cancel", null);
 						builder2.show();
 						*/
+						/*
+						AlertDialog.Builder builder2 = new Builder(ListActivity.this);
+						builder2.setMessage("DisConnect\resend the invite?");						
+						builder2.setNeutralButton("Cancel", null);
+						
+						
+						builder2.setPositiveButton("DisConnect", new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								// TODO Auto-generated method stub
+								SaveReadWrite.GetConfigure().coupleState=CoupleStateEnum.NOACTION;
+								SaveReadWrite.GetConfigure().coupleName="";
+								SaveReadWrite.WriteConfigure();
+								ClearListView();
+								InitList();
+								
+							}
+						}); 
+						builder2.setNegativeButton("Resend", new DialogInterface.OnClickListener() {
+							
+							@Override
+							public void onClick(DialogInterface arg0, int arg1) {
+								// TODO Auto-generated method stub
+								Chat chat1=Communication.GetConnection().getChatManager().createChat(SaveReadWrite.GetConfigure().coupleName, null);
+								try {
+									chat1.sendMessage(Communication.ActionStart+"<ADD>"+SaveReadWrite.GetConfigure().Name);
+								} catch (XMPPException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								
+							}
+						});
+						
+						builder2.show();
+						*/
 						handler.obtainMessage(3, null).sendToTarget();
+						
 					}
 					if(SaveReadWrite.GetConfigure().coupleState==CoupleStateEnum.INVITE)
 					{
@@ -458,6 +516,8 @@ public class ListActivity extends Activity{
 						map.put("listview_item_name", r.getName());
 						map.put("listview_item_address", r.getUser());
 						map.put("listview_item_state", "");
+						map.put("listview_item_photo", R.drawable.photo);
+						map.put("listview_item_imgstate",R.drawable.state_noaction);
 						listItem.add(map);
 						entry.add(r);
 					}
@@ -473,8 +533,8 @@ public class ListActivity extends Activity{
 						ListActivity.this,
 						listItem,
 						R.layout.listview_item,
-						new String[]{"listview_item_name","listview_item_address","listview_item_state"},
-						new int[]{R.id.listview_item_name,R.id.listview_item_address,R.id.listview_item_state});
+						new String[]{"listview_item_name","listview_item_address","listview_item_state","listview_item_photo","listview_item_imgstate"},
+						new int[]{R.id.listview_item_name,R.id.listview_item_address,R.id.listview_item_state,R.id.listview_item_photo,R.id.listview_item_imgstate});
 				
 				rosterListView.setAdapter(listItemAdapter);
 				SetListViewState();
@@ -514,9 +574,10 @@ public class ListActivity extends Activity{
 				ListActivity.this,
 				listItem,
 				R.layout.listview_item,
-				new String[]{"listview_item_name","listview_item_address","listview_item_state"},
-				new int[]{R.id.listview_item_name,R.id.listview_item_address,R.id.listview_item_state});
-		
+				//new String[]{"listview_item_name","listview_item_address","listview_item_state"},
+				//new int[]{R.id.listview_item_name,R.id.listview_item_address,R.id.listview_item_state});
+				new String[]{"listview_item_name","listview_item_address","listview_item_state","listview_item_photo","listview_item_imgstate"},
+				new int[]{R.id.listview_item_name,R.id.listview_item_address,R.id.listview_item_state,R.id.listview_item_photo,R.id.listview_item_imgstate});
 		rosterListView.setAdapter(listItemAdapter);
 	}
 	
