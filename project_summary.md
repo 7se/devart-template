@@ -1,20 +1,16 @@
 Breath and Exist
 
 ## Authors
-<<<<<<< HEAD
-- Luyu Gao 
-- Jin Cui 
 
-## Description
-ddd
-=======
 - Luyu Gao https://github.com/7se
 - Jin Cui
-
 ## Description
+
+
+
 Traget User: Long-Distances' lovers
 Discription: For LDR peoples, the distances is always the biggest problem. For them they communicate by words, audios and cybercams to feel the existances of the relationship. However, all those ways are only on the niveau of 'thought', they couldn't feel each others' emotions, what are as usual as the breath or the beat of heart. I hope those LDR peoples could through the interaction design, precisely, by visual technic, to really feel each other's emotions' changes, and then, draw the distance more closer. 
->>>>>>> b172d3c5645c76e6261545d90860c9ef88227f70
+
 
 ## Link to Prototype
 NOTE: If your project lives online you can add one or more links here. Make sure you have a stable version of your project running before linking it.
@@ -25,9 +21,8 @@ NOTE: If your project lives online you can add one or more links here. Make sure
 NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
 ``` 
 function test() {
-<<<<<<< HEAD
-  console.log("Prrrrrrinting a test");
-=======
+
+
   console.log("Printing a test");
 
   for(int i=0;i<length;i++)
@@ -55,7 +50,6 @@ function test() {
   }
 
 
->>>>>>> b172d3c5645c76e6261545d90860c9ef88227f70
 }
 
 ```
