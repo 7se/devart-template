@@ -1,3 +1,4 @@
+# Breath and Exist
 Breath and Exist
 
 ## Authors
@@ -12,11 +13,24 @@ Breath and Exist
 Traget User: Long-Distances' lovers
 Discription: For LDR peoples, the distances is always the biggest problem. For them they communicate by words, audios and cybercams to feel the existances of the relationship. However, all those ways are only on the niveau of 'thought', they couldn't feel each others' emotions, what are as usual as the breath or the beat of heart. I hope those LDR peoples could through the interaction design, precisely, by visual technic, to really feel each other's emotions' changes, and then, draw the distance more closer. 
 
+Tech Use:
 
-## Link to Prototype
-NOTE: If your project lives online you can add one or more links here. Make sure you have a stable version of your project running before linking it.
 
-[Example Link](http://www.google.com "Example Link")
+the app use the gtalk name and passcode to login.
+
+XMPP is used in the app for connecting the phone your Lover use.
+
+when app start it will run a service in back to wait for the "blow message".
+
+when the "blow message" come,no matter what is show on the screen it will draw the "halitus" on screeen like your lover 
+
+blow on your glasses.
+
+when start to blow,it will catch the sound from the mic,with the FFT it will caculate the freenquence of the sound,and 
+
+judge if it is the blow or the other sound.
+
+
 
 ## Example Code
 NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
@@ -55,9 +69,11 @@ function test() {
 
 ```
 ## Links to External Libraries
- NOTE: You can also use this space to link to external libraries or Github repositories you used on your project.
+ the XMPPConnection to the gtalk use the asmack
 
-[Example Link](http://www.google.com "Example Link")
+[asmack](https://github.com/rtreffer/asmack "asmack")
+
+
 
 ## Images & Videos
 NOTE: For additional images you can either use a relative link to an image on this repo or an absolute link to an externally hosted image.
