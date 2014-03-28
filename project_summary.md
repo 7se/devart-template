@@ -22,10 +22,7 @@ when app start it will run a service in back to wait for the message.
 when the message come,no matter what is show on the screen it will draw the "halitus" on screeen like your lover blow on your glasses.
 
 
-## Link to Prototype
-NOTE: If your project lives online you can add one or more links here. Make sure you have a stable version of your project running before linking it.
 
-[Example Link](http://www.google.com "Example Link")
 
 ## Example Code
 NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
