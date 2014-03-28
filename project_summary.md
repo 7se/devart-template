@@ -76,7 +76,7 @@ function test() {
 [asmack](https://github.com/rtreffer/asmack "asmack")
 
 
-app download
+app download( open the link and click the "RAW")
 [mhere](https://github.com/7se/devart-template/blob/master/project_code/mhere/bin/mhere.apk "mhere")
 
 
