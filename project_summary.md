@@ -1,13 +1,12 @@
-# Project Title
-Insert the name of your project
-my title my title
+Breath and Exist
 
 ## Authors
-- Insert main author name, surname, github account
-- Insert other author(s) name, surname, github account (one per list element)
+- Luyu Gao https://github.com/7se
+- Jin Cui
 
 ## Description
-Insert a description containing about 100 to 150 words, including your motivation and the meaning behind your idea and execution. The Judges will be keen to know how your idea pushes the boundaries of code and technology. 
+Traget User: Long-Distances' lovers
+Discription: For LDR peoples, the distances is always the biggest problem. For them they communicate by words, audios and cybercams to feel the existances of the relationship. However, all those ways are only on the niveau of 'thought', they couldn't feel each others' emotions, what are as usual as the breath or the beat of heart. I hope those LDR peoples could through the interaction design, precisely, by visual technic, to really feel each other's emotions' changes, and then, draw the distance more closer. 
 
 ## Link to Prototype
 NOTE: If your project lives online you can add one or more links here. Make sure you have a stable version of your project running before linking it.
@@ -16,10 +15,37 @@ NOTE: If your project lives online you can add one or more links here. Make sure
 
 ## Example Code
 NOTE: Wrap your code blocks or any code citation by using ``` like the example below.
-```
+``` 
 function test() {
-  console.log("Prrinting a test");
+  console.log("Printing a test");
+
+  for(int i=0;i<length;i++)
+
+  {
+    for(int j=0;j<width;j++)
+
+    {
+     
+ bitmap[i][j]=(Math.sin(i*Math.cos(j))<<24)&0xffffff;
+
+    }
+
+  }
+
+  for(int alpha=0;alpha<255;alpha++)
+
+  {
+    bitmap.setAlpha(alpha);
+
+      bitmap.draw();
+  
+      sleep(30);
+
+  }
+
+
 }
+
 ```
 ## Links to External Libraries
  NOTE: You can also use this space to link to external libraries or Github repositories you used on your project.
@@ -29,6 +55,4 @@ function test() {
 ## Images & Videos
 NOTE: For additional images you can either use a relative link to an image on this repo or an absolute link to an externally hosted image.
 
-![Example Image](project_images/cover.jpg?raw=true "Example Image")
-
-https://www.youtube.com/watch?v=30yGOxJJ2PQ
+![Example Image](project_images/sketch1.jpg?raw=true "Example Image")
