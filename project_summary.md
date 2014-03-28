@@ -17,10 +17,18 @@ Tech Use:
 
 
 the app use the gtalk name and passcode to login.
+
 XMPP is used in the app for connecting the phone your Lover use.
+
 when app start it will run a service in back to wait for the "blow message".
-when the "blow message" come,no matter what is show on the screen it will draw the "halitus" on screeen like your lover blow on your glasses.
-when start to blow,it will catch the sound from the mic,with the FFT it will caculate the freenquence of the sound,and judge if it is the blow or the other sound.
+
+when the "blow message" come,no matter what is show on the screen it will draw the "halitus" on screeen like your lover 
+
+blow on your glasses.
+
+when start to blow,it will catch the sound from the mic,with the FFT it will caculate the freenquence of the sound,and 
+
+judge if it is the blow or the other sound.
 
 
 
@@ -61,9 +69,10 @@ function test() {
 
 ```
 ## Links to External Libraries
- NOTE: You can also use this space to link to external libraries or Github repositories you used on your project.
+ the XMPPConnection to the gtalk use the asmack
 
-[Example Link](https://github.com/rtreffer/asmack "asmack")
+[asmack](https://github.com/rtreffer/asmack "asmack")
+
 
 
 ## Images & Videos
